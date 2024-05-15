@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input{
+    text-align: center;
+    vertical-align: center;
+    width: 4ch;
+    height: 4ch;
+    font-size: 1.1rem;
+    background-color: inherit;
+    border-radius: 1rem;
+    border: none;
+    cursor: default;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.button{
+    white-space: nowrap;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(211, 211, 211);
+    font-weight: bolder;
+    cursor: pointer;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}   
+.reset{
+    background-color:rgb(162, 164, 170); ;
 }
-
-.App-link {
-  color: #61dafb;
+.message{
+    font-size: 16px;
+    font-weight: bolder;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.row{
+    width: fit-content;
+    gap: 0.5rem;
+    border-radius: 2rem;
+    background-color: lightblue;
+}
+.first{
+    background-color: rgb(136, 202, 224);
+}
+li.barre{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    font-family: 'Times New Roman';
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 6px;
+    width: 1.5rem;
+    height: 8.5rem;
+}
+.showdown{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
 }
