@@ -5,6 +5,10 @@
     align-items: center;
     row-gap: 1rem;
 }
+.title{
+    color: rgb(82, 9, 151);
+    
+}
 .input{
     text-align: center;
     vertical-align: center;

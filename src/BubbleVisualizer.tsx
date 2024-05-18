@@ -36,7 +36,6 @@ function BubbleVisualizer(){
     changeButtonState(true);
     let start = performance.now();
     let index = 0;
-
     let copy = [...array];
     sortAlgorithm.order(array);
     let numberSwaps = sortAlgorithm.arraySequence.length;
@@ -64,7 +63,7 @@ function BubbleVisualizer(){
   return (
   
   <div className='container'>
-    <h1>Bubble Visualizer</h1>
+    <h1 className='title'>Bubble Visualizer</h1>
     <p>An excercise to display the most commons comparison search algorithms </p>
     <div className='buttonContainer'>
       <button className='button' disabled={isButtonDisabled} onClick={()=>{print(new BubbleSort())}}> Bubble sort me!</button>

@@ -1,5 +1,4 @@
-//@ts-ignore
-import { BubbleSort } from "./BubbleSort.ts";
+import { BubbleSort } from "./BubbleSort";
 import { Sorter} from "./Sorter";
 
 
@@ -14,9 +13,7 @@ export class MergeSortVisual implements Sorter{
       arrayObject.array[i] = array[i];
       arrayObject.index[i] = i;
     }
-   //fix
-   let a =  this.mergeSort(arrayObject).array;
-   return a;
+   return this.mergeSort(arrayObject).array;;
   }
   mergeSort(object: ArrayObject): ArrayObject {
     if (object.array.length <= 1) {
@@ -58,7 +55,12 @@ export class MergeSortVisual implements Sorter{
     //////////////
     ////Use bubblesort for order indexes
     ///////////////
-
+    this.orderIndexWithBubbleSort(result);
+    // result.index = left.index.concat(right.index); // Set ordered indexes
+    return result;
+    
+  } 
+  orderIndexWithBubbleSort(result:ArrayObject){
     let arraySize = result.index.length;
     for (let i = 0; i < arraySize - 1; i++) {
       for (let j = 0; j < arraySize - i - 1; j++) {
@@ -71,10 +73,7 @@ export class MergeSortVisual implements Sorter{
         }
       }
     }
-    // result.index = left.index.concat(right.index); // Set ordered indexes
-    return result;
-    
-  } 
+  }
 }
 export class ArrayObject{
   array:number[] = [];
