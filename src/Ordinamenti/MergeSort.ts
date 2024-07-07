@@ -3,7 +3,7 @@ import { Sorter} from "./Sorter";
 
 export class MergeSort implements Sorter{
   name = "Merge sort";
-  arraySequence: number[][] = []; //todo
+  arraySequence: number[][] = []; 
 
   order(array: number[]): number[] {
     return this.mergeSort(array);
@@ -18,6 +18,7 @@ export class MergeSort implements Sorter{
   //   }
   // }
 
+    //  RECURSIVE METHOD
   mergeSort(array: number[]): number[] {
     if (array.length <= 1) {
         return array;
@@ -27,7 +28,7 @@ export class MergeSort implements Sorter{
     const rightHalf = array.slice(middle);
     return this.merge(this.mergeSort(leftHalf), this.mergeSort(rightHalf));
   }
- 
+    //  ITERATIVE METHOD
   merge(left:number[], right:number[]):number[] {
     let result: number[] = [];
     let i = 0; //LEFT INDEX

@@ -7,6 +7,8 @@ import { QuickSort } from './Ordinamenti/QuickSort';
 import { TimSort } from './Ordinamenti/TimSort';
 import { InsertionSort } from './Ordinamenti/InsertionSort';
 import { MergeSortVisual } from './Ordinamenti/MergeSortVisual';
+import Bars from './Components/Bars';
+import InputArray from './Components/InputArray';
 
 
 function BubbleVisualizer(){
@@ -21,7 +23,6 @@ function BubbleVisualizer(){
   const [message,changeMessage] = useState('');
   const [isButtonDisabled,changeButtonState]=useState(false);
 
-  let ids=0;
     ///
     //spread operator complexity O(n)
     ///
@@ -74,34 +75,12 @@ function BubbleVisualizer(){
       <button className='button' disabled={isButtonDisabled} onClick={()=>{print(new TimSort())}}> Tim sort me!</button>
     </div>
     <button className='button reset'  onClick={()=>{sortFunction(init);changeArray(init);colorState([-1,-1])}}> Reset</button> 
+    
     <p className='message'>{message}</p>
-    <div key={ids++} className='row first'>
-        { 
-          array.map((num,index) => {
-            return  <input key={ids++} className='input' onChange={ev=>{handleChange(+ev.target.value,index)}} value={num} type='tel'></input>;
-          })
-        }
-    </div>
-    {
-      <div key={ids++} className='row'>
-        { 
-          sortingArray.map((num,i) => {
-            return  <input key={ids++} style={{
-              backgroundColor:(i===color[0] || i===color[1])?'orange':'',
-            }}  readOnly className='input' value={num} type='tel'></input>;
-          })
-        }
-      </div>
-    }
-    <div className='showdown'>
-    {
-       sortingArray.map((val,i)=>{
-        return <li key={ids++} className="barre" style={{ backgroundColor:(i===color[0] || i===color[1])?'rgb(185, 22, 185)':'purple',height:val*12}}>
-            
-        </li>
-    })
-    }
-    </div>
+
+    <InputArray array={array} sortingArray={sortingArray} color={color} handleChange={handleChange}></InputArray>
+
+    <Bars sortingArray={sortingArray} color={color}></Bars>
 
   </div>
     

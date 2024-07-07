@@ -9,15 +9,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 <img src="./doc/Bars.gif" alt="drawing" width="400"/>
 
 ## Available Algorithms
-Algorithm | `STABLE` | `IN LOCO`
---- | :---: | :---:
-`BubbleSort` | &#x2713; | &#x2713;
-`HeapSort` | &#x2713; | &cross;
-`QuickSort` | &#x2713; | &cross;
-`InsertionSort` | &#x2713; | &#x2713;
-`TimSort` | &#x2713; | &#x2713;
-`MergeSort` |  &#x2713;  |  &#x2713;
-
+Algorithm | `STABLE` | `IN LOCO` | `Complexity`
+--- | :---: | :---: | :---:
+`BubbleSort` | &#x2713; | &#x2713; |  $ O(n^2) $
+`HeapSort` | &#x2713; | &cross; |  $ O(nlog_2n) $
+`QuickSort` | &#x2713; | &cross; |  $ \approx O(nlog_2n) $
+`InsertionSort` | &#x2713; | &#x2713; | $ O(n^2) $
+`TimSort` | &#x2713; | &#x2713; |  $ O(nlog_2n) $
+`MergeSort` |  &#x2713;  |  &#x2713; |  $ O(nlog_2n) $
+`BinarySearch` | - | - | $ O(log_2n) $
 
 
 In the project directory, you can run:
