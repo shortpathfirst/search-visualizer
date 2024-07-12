@@ -3,7 +3,7 @@ import './input.css'
 function InputArray({array,sortingArray,handleChange,color}) {
   return (
     <React.Fragment>
-        <div className='inputBox input'>
+        <div className='inputBox'>
             { 
             array.map((num,index) => {
                 return  <input 

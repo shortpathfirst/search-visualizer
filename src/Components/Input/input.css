@@ -3,10 +3,7 @@
     width: fit-content;
     gap: 0.5rem;
     border-radius: 2rem;
-    background-color: lightblue;
-}
-.inputBox.input{
-    background-color: rgb(136, 202, 224);
+    background-image: linear-gradient(278deg, rgba(79,79,126,0.969625350140056) 3%, rgba(91,91,146,0.63) 46%, rgba(255,255,255,0) 100%);
 }
 .number{
     text-align: center;
@@ -22,5 +19,5 @@
     outline: none;
 }
 .number.input:hover{
-    background-color: rgb(98, 174, 199);
+    background-image:  radial-gradient(circle, rgba(79,79,126,0.969625350140056) 3%, rgba(146,91,108,0.63) 100%, rgba(255,255,255,0) 100%);
 }

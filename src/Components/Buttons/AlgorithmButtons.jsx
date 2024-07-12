@@ -8,14 +8,14 @@ function AlgorithmButtons({isButtonDisabled,ALGORITHMS,handleActionBtn,handleRes
       <div>
       {/* AlGORHTM BUTTONS */}
       {
-        ALGORITHMS.map((algorithm)=>{
-          return <React.Fragment>
-            <div class="dropdown">
+        ALGORITHMS.map((algorithm,i)=>{
+          return <React.Fragment key={`Algorithm ${i}`}   >
+            <div className="dropdown">
               <button className='button' disabled={isButtonDisabled} onClick={()=>handleActionBtn(algorithm)}> {algorithm.name}</button>
-              <div class="dropdownContent">
+              <div className="dropdownContent">
                 {
                   algorithm.description.map((d)=>{
-                    return  <p>{d}</p>
+                    return  <p key={`Description`}>{d}</p>
                   })
                 }
 
