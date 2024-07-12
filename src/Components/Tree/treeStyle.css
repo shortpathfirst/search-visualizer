@@ -1,0 +1,13 @@
+.treeContainer{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width:65rem;
+    height: 20rem;
+    transform: translate(-50%);
+}
+
+.treeNode:hover{
+    background-color: rgb(211, 170, 94) !important;
+    transform:scale(1.3);
+}

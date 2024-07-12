@@ -5,8 +5,9 @@ import { Sorter} from "./Sorter";
 export class MergeSortVisual implements Sorter{
   name = "Merge sort me!";
   description: string[] = ["Complexity: O(n log n)"];
-  arraySequence: number[][] = [[]];
+  arraySequence: number[][] = [];
   bubbleSort = new BubbleSort();
+
   order(array: number[]): number[] {
     let arrayObject:ArrayObject = new ArrayObject();
     //couple array with indexes

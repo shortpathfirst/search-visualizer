@@ -21,7 +21,9 @@ Algorithm | `STABLE` | `IN LOCO` | `Complexity`
 
 
 In the project directory, you can run:
-
+## Version 2
+Heapsort is now displayed as a binary tree
+![alt text](image.png)
 ### `npm start`
 
 Runs the app in the development mode.\

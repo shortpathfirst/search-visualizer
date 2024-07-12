@@ -1,17 +1,16 @@
 
 import { Sorter } from "./Sorter";
 export class HeapSort implements Sorter {
-  
-//NON STABILE SCAMBIA ELEMENTI UGUALI
-//IN LOCO USA STESSO ARRAY
+
 name = "Heap sort me!";
-description: string[] = ["Complexity: O(n log n)"];
+description: string[] = ["Complexity: O(n log n)","Non stabile","In loco"];
 arraySequence: number[][] = [];
+
   order(array: number[]): number[] {
     this.heapSort(array);
     return array;
   }
- private parent(i:number){//valore parent >= figlio
+ private parent(i:number){
     return i/2;
   }
   private left(i:number){

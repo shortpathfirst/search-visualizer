@@ -1,47 +1,51 @@
 import React, {useState } from 'react'
 import './App.css'
 import { Sorter } from './Ordinamenti/Sorter';
-import { BubbleSort } from './Ordinamenti/BubbleSort';
-import { HeapSort } from './Ordinamenti/HeapSort';
-import { QuickSort } from './Ordinamenti/QuickSort';
-import { TimSort } from './Ordinamenti/TimSort';
-import { InsertionSort } from './Ordinamenti/InsertionSort';
-import { MergeSortVisual } from './Ordinamenti/MergeSortVisual';
 import Bars from './Components/Bars/Bars';
 import InputArray from './Components/Input/InputArray';
 import AlgorithmButtons from './Components/Buttons/AlgorithmButtons';
+import TreeVisual from './Components/Tree/TreeVisual';
+import { HeapSort } from './Ordinamenti/HeapSort';
 
+
+//  const init= [19, 13, 0, 10, 4, 12, 2, 14, 8, 10, 3, 16, 13, 7, 10, 12, 18, 10, 13, 5];
+const RNDVALUES=()=>{return Array.from({length: 20}, () => Math.floor(Math.random() * 40))}
 
 function BubbleVisualizer(){
 
-//  const init= [19, 13, 0, 10, 4, 12, 2, 14, 8, 10, 3, 16, 13, 7, 10, 12, 18, 10, 13, 5];
-  const RNDVALUES=Array.from({length: 20}, () => Math.floor(Math.random() * 40));
-  const ALGORITHMS = [new BubbleSort(),new HeapSort(),new QuickSort(),new InsertionSort(),new MergeSortVisual(),new TimSort()];
+  const init = RNDVALUES();
 
-  const [array,changeArray] = useState(RNDVALUES);
-  const [sortingArray,sortFunction] = useState(array); 
+  const [numbersArray,changeArray] = useState(init);
+  const [sortingArray,sortFunction] = useState([...numbersArray]); 
   const [color,colorState] = useState([-1,-1]);
-
   const [message,changeMessage] = useState('');
-  const [isButtonDisabled,disableButtons] = useState(false);
+  const [isButtonDisabled,setButtonDisabled] = useState(false);
+  const [isHeap,setHeap] = useState(false);
 
-  function handleChange(val:number,index:number){
-    let copy = [...array]; //O(n)
-    copy[index] = val;
-    changeArray(copy);
-    sortFunction(copy);
+  function handleChange(newVal:number,index:number){
+    const newArray = numbersArray.map((value, i) => {
+      return i === index? newVal : value;
+    });
+    changeArray(newArray);
+    sortFunction(newArray);
   }
 
   function print(sortAlgorithm:Sorter){
-    disableButtons(true);
+    setButtonDisabled(true);
+    if(sortAlgorithm instanceof HeapSort){
+      setHeap(true);
+    }else{
+      setHeap(false);
+    }
     // Performance Evaluation
     let start = performance.now(); 
-    let index = 0;
-    let copy = [...array];
-    // Order
-    sortAlgorithm.order(array); 
+    // Order Array
+    sortFunction([...numbersArray]);
+    sortAlgorithm.order([...numbersArray]); 
     let numberSwaps = sortAlgorithm.arraySequence.length;
-
+    // Swap the sorting array
+    let copy = [...numbersArray];
+    let index = 0;
     const interval = setInterval(() => {
       if(sortAlgorithm.arraySequence.length > index){
         let [i,j] = sortAlgorithm.arraySequence[index];
@@ -50,29 +54,38 @@ function BubbleVisualizer(){
         colorState([i,j]);
         index++;
       }else{
-        disableButtons(false);
+        setButtonDisabled(false);
         let end = performance.now();
         let msg =`${sortAlgorithm.name} performed in ${(end-start).toFixed(2)} ms with ${numberSwaps} swaps`
         changeMessage(msg);
-        changeArray(RNDVALUES);
         clearInterval(interval);
       }
-    }, 50);
+    }, 100);
   }
-  
+
+  const onReset = ()=>{
+      const init = RNDVALUES();
+      sortFunction([...init]);
+      changeArray([...init]);
+      colorState([-1,-1]);
+  }
   return (
   
   <div className='container'>
     <h1 className='title'>Bubble Visualizer</h1>
     <p id='subtitle'>An excercise to display the most commons comparison search algorithms </p>
 
-    <AlgorithmButtons isButtonDisabled={isButtonDisabled} ALGORITHMS={ALGORITHMS} handleActionBtn={print} handleReset={()=>{sortFunction(RNDVALUES);changeArray(RNDVALUES);colorState([-1,-1])}}></AlgorithmButtons>
+    <AlgorithmButtons isButtonDisabled={isButtonDisabled} handleActionBtn={print} handleReset={onReset}></AlgorithmButtons>
     
     <p className='message'>{message}</p>
 
-    <InputArray array={array} sortingArray={sortingArray} color={color} handleChange={handleChange}></InputArray>
+    <InputArray array={numbersArray} sortingArray={sortingArray} color={color} handleChange={handleChange}></InputArray>
 
-    <Bars sortingArray={sortingArray} color={color}></Bars>
+    {
+      isHeap ?
+      <TreeVisual sortingArray={sortingArray} color={color}></TreeVisual> :
+      <Bars sortingArray={sortingArray} color={color}></Bars>
+    }
 
   </div>
     

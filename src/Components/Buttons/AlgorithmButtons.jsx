@@ -1,7 +1,16 @@
 import React from 'react'
 import './buttons.css'
-function AlgorithmButtons({isButtonDisabled,ALGORITHMS,handleActionBtn,handleReset}) {
-    
+import { BubbleSort } from '../../Ordinamenti/BubbleSort';
+import { HeapSort } from '../../Ordinamenti/HeapSort';
+import { QuickSort } from '../../Ordinamenti/QuickSort';
+import { TimSort } from '../../Ordinamenti/TimSort';
+import { InsertionSort } from '../../Ordinamenti/InsertionSort';
+import { MergeSortVisual } from '../../Ordinamenti/MergeSortVisual';
+
+function AlgorithmButtons({isButtonDisabled,handleActionBtn,handleReset}) {
+
+  const ALGORITHMS = [new BubbleSort(),new HeapSort(),new QuickSort(),new InsertionSort(),new MergeSortVisual(),new TimSort()];
+
   return (
 
     <div className='buttonContainer'>
@@ -14,8 +23,8 @@ function AlgorithmButtons({isButtonDisabled,ALGORITHMS,handleActionBtn,handleRes
               <button className='button' disabled={isButtonDisabled} onClick={()=>handleActionBtn(algorithm)}> {algorithm.name}</button>
               <div className="dropdownContent">
                 {
-                  algorithm.description.map((d)=>{
-                    return  <p key={`Description`}>{d}</p>
+                  algorithm.description.map((d,j)=>{
+                    return  <p key={`Description ${j}`}>{d}</p>
                   })
                 }
 

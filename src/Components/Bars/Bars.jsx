@@ -4,16 +4,16 @@ function Bars({sortingArray,color}) {
 
     const [maxVal,setMaxVal] = useState(1);
 
-    function findMax(){
-      let max =1;
-      sortingArray.forEach(element => {
-        if(element && element > max)
-          max = element;
-      });
-      return max;
-    }
-    
     useEffect(() => {
+      function findMax(){
+        let max =1;
+        sortingArray.forEach(element => {
+          if(element && element > max)
+            max = element;
+        });
+        return max;
+      }
+      
       setMaxVal(findMax());
       return () => {
         
