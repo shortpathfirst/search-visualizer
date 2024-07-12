@@ -4,7 +4,8 @@ import { Sorter } from "./Sorter";
 export class InsertionSort implements Sorter {
 //STABILE NON SCAMBIA ELEMENTI UGUALI
 //IN LOCO USA STESSO ARRAY
-  name = "Insertion sort";
+  name = "Insertion sort me!";
+  description: string[] = ["Complexity: O(n^2)"];
   arraySequence:number[][]= [];
 
   order(arr: number[]): number[] {

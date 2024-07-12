@@ -3,7 +3,7 @@ import { Sorter } from "./Sorter";
 export class CountingSort implements Sorter{
     name: string = "Counting Sort";
     arraySequence: number[][] = [];
-
+    description: string[] = ["Complexity: O(n)"];
     order(array: number[]): number[] {
         //Find Max k
         let max = 0;

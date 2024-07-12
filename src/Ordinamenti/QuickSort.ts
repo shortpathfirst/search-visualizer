@@ -5,7 +5,8 @@ export class QuickSort implements Sorter{
 //caso peggiore con algoritmo già ordinato (pivot max o min)
 //opera in loco
 //non è stabile
-name = "Quick sort";
+name = "Quick sort me!";
+description: string[] = ["Complexity: O(n log n)"];
 arraySequence: number[][] = [];
 
   order(array: number[]): number[] {

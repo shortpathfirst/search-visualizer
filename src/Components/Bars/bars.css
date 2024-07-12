@@ -1,0 +1,19 @@
+li.barre{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    font-family: 'Times New Roman';
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 6px;
+    width: 1.5rem;
+    height: 8.5rem;
+}
+.barContainer{
+    padding: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}

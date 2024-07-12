@@ -4,7 +4,8 @@ export class HeapSort implements Sorter {
   
 //NON STABILE SCAMBIA ELEMENTI UGUALI
 //IN LOCO USA STESSO ARRAY
-name = "Heap sort";
+name = "Heap sort me!";
+description: string[] = ["Complexity: O(n log n)"];
 arraySequence: number[][] = [];
   order(array: number[]): number[] {
     this.heapSort(array);

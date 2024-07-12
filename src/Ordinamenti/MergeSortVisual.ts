@@ -3,7 +3,8 @@ import { Sorter} from "./Sorter";
 
 
 export class MergeSortVisual implements Sorter{
-  name = "Merge sort";
+  name = "Merge sort me!";
+  description: string[] = ["Complexity: O(n log n)"];
   arraySequence: number[][] = [[]];
   bubbleSort = new BubbleSort();
   order(array: number[]): number[] {

@@ -4,7 +4,8 @@ import { Sorter } from "./Sorter";
 export class BubbleSort implements Sorter {
 //STABILE NON SCAMBIA ELEMENTI UGUALI
 //IN LOCO USA STESSO ARRAY
-  name = "Bubble sort";
+  name = "Bubble sort me!";
+  description: string[] = ["Complexity: O(n^2)"];
   arraySequence:number[][]= [];
 
   order(array: number[]): number[] {

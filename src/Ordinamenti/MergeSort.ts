@@ -3,6 +3,7 @@ import { Sorter} from "./Sorter";
 
 export class MergeSort implements Sorter{
   name = "Merge sort";
+  description: string[] = ["Complexity: O(n log n)"];
   arraySequence: number[][] = []; 
 
   order(array: number[]): number[] {

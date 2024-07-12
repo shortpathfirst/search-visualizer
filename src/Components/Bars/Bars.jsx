@@ -1,10 +1,10 @@
 import React from 'react'
-
+import './bars.css'
 function Bars({sortingArray,color}) {
 
     
   return (
-    <div className='showdown'>
+    <div className='barContainer'>
     {
        sortingArray.map((val,i)=>{
         return (

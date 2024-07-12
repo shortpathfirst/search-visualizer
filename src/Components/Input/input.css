@@ -1,0 +1,26 @@
+
+.inputBox{
+    width: fit-content;
+    gap: 0.5rem;
+    border-radius: 2rem;
+    background-color: lightblue;
+}
+.inputBox.input{
+    background-color: rgb(136, 202, 224);
+}
+.number{
+    text-align: center;
+    vertical-align: center;
+    width: 4ch;
+    height: 4ch;
+    font-size: 1.1rem;
+    font-weight: bolder;
+    background-color: inherit;
+    border-radius: 1rem;
+    border: none;
+    cursor: default;
+    outline: none;
+}
+.number.input:hover{
+    background-color: rgb(98, 174, 199);
+}

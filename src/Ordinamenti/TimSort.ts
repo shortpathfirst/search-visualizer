@@ -2,7 +2,8 @@ import { Sorter} from "./Sorter";
 
 
 export class TimSort implements Sorter{
-name = "Tim sort";
+name = "Tim sort me!";
+description: string[] = ["Complexity: O(n log n)"];
 arraySequence: number[][] = [];
 
   order(array: number[]): number[] {

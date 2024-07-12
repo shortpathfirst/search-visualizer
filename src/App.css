@@ -3,73 +3,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 1rem;
+
 }
 .title{
-    color: rgb(82, 9, 151);
-    
+    font-size: 4rem;
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: 15px;
+    letter-spacing: 5px;
+    user-select: none;
 }
-.input{
-    text-align: center;
-    vertical-align: center;
-    width: 4ch;
-    height: 4ch;
-    font-size: 1.1rem;
-    background-color: inherit;
-    border-radius: 1rem;
-    border: none;
-    cursor: default;
+#subtitle{
+    font-size: 1.5rem;
 }
-.buttonContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1rem;
-}
-.button{
-    white-space: nowrap;
-    border: none;
-    border-radius: 8px;
-    background-color: rgb(211, 211, 211);
-    font-weight: bolder;
-    cursor: pointer;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}   
-.reset{
-    background-color:rgb(162, 164, 170); ;
-}
+
 .message{
     font-size: 16px;
     font-weight: bolder;
-}
-.row{
-    width: fit-content;
-    gap: 0.5rem;
-    border-radius: 2rem;
-    background-color: lightblue;
-}
-.first{
-    background-color: rgb(136, 202, 224);
-}
-li.barre{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    list-style-type: none;
-    font-family: 'Times New Roman';
-    font-weight: bold;
-    border: 1px solid black;
-    border-radius: 6px;
-    width: 1.5rem;
-    height: 8.5rem;
-}
-.showdown{
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
 }
