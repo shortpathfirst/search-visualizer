@@ -83,7 +83,7 @@ function BubbleVisualizer(){
 
     {
       isHeap ?
-      <TreeVisual sortingArray={sortingArray} color={color}></TreeVisual> :
+      <TreeVisual sortingArray={sortingArray} color={color} handleChange={handleChange}></TreeVisual> :
       <Bars sortingArray={sortingArray} color={color}></Bars>
     }
 

@@ -1,9 +1,9 @@
-import React , { useRef,useState,useEffect} from 'react'
+import React , { useState,useEffect} from 'react'
 import {BinaryTreeUtils} from '../../LayeredDraw/BinaryTreeUtils.js'
 import {LayeredTreeDraw} from '../../LayeredDraw/LayeredDraw.js'
 import './treeStyle.css'
 
-function TreeVisual({sortingArray,color}) {
+function TreeVisual({sortingArray,color,handleChange}) {
 
 
     const [treePositions,setTreePos] = useState([]);
@@ -27,11 +27,10 @@ function TreeVisual({sortingArray,color}) {
         return () => {
           
         }
-      }, [])
+      }, [sortingArray])
       
 
   return (
-<React.Fragment>
 <div className='treeContainer'>
         {
 
@@ -59,7 +58,6 @@ function TreeVisual({sortingArray,color}) {
             </svg>
 
             <div  
-             
              className='treeNode'
              style={{
               position:'absolute',
@@ -77,18 +75,22 @@ function TreeVisual({sortingArray,color}) {
               border:'5px rgb(209, 142, 17) solid',
               cursor:'pointer',
              
-            }}>{sortingArray[i]} 
+            }}>
+              <input 
+                key={`Number ${i}`} 
+                className='number'  
+                onFocus={()=>handleChange('',i)} 
+                onChange={ev=>{handleChange(+ev.target.value,i)}} 
+                value={sortingArray[i]} type='tel'>
+              </input> 
 
             </div>
 
-
-            
             </React.Fragment>
           })
         }
       
 </div>
-</React.Fragment>
   )
 }
 

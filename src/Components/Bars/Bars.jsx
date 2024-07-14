@@ -4,6 +4,10 @@ function Bars({sortingArray,color}) {
 
     const [maxVal,setMaxVal] = useState(1);
 
+    const HEIGHTSCALE = 500/maxVal ;
+   
+    
+
     useEffect(() => {
       function findMax(){
         let max =1;
@@ -13,7 +17,7 @@ function Bars({sortingArray,color}) {
         });
         return max;
       }
-      
+
       setMaxVal(findMax());
       return () => {
         
@@ -29,8 +33,8 @@ function Bars({sortingArray,color}) {
             key={`Bar ${i}`} 
             className="barre" 
             style={{ 
-                backgroundColor:(i===color[0] || i===color[1])?'rgb(185, 22, 185)':'purple',
-                height:(val/maxVal)*500,
+                    backgroundColor:(i===color[0] || i===color[1])?'rgb(185, 22, 185)':'purple',
+                    height:val*HEIGHTSCALE,
                 }}>
             
         </li>)
