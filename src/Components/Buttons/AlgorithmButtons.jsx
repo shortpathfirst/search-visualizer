@@ -7,36 +7,46 @@ import { TimSort } from '../../Ordinamenti/TimSort';
 import { InsertionSort } from '../../Ordinamenti/InsertionSort';
 import { MergeSortVisual } from '../../Ordinamenti/MergeSortVisual';
 
-function AlgorithmButtons({isButtonDisabled,handleActionBtn,handleReset}) {
+const ALGORITHMS = [
+  new BubbleSort(),
+  new HeapSort(),
+  new QuickSort(),
+  new InsertionSort(),
+  new MergeSortVisual(),
+  new TimSort()
+];
 
-  const ALGORITHMS = [new BubbleSort(),new HeapSort(),new QuickSort(),new InsertionSort(),new MergeSortVisual(),new TimSort()];
+function AlgorithmButtons({ isButtonDisabled, handleActionBtn, handleReset }) {
 
   return (
 
     <div className='buttonContainer'>
       <div>
-      {/* AlGORHTM BUTTONS */}
-      {
-        ALGORITHMS.map((algorithm,i)=>{
-          return <React.Fragment key={`Algorithm ${i}`}   >
-            <div className="dropdown">
-              <button className='button' disabled={isButtonDisabled} onClick={()=>handleActionBtn(algorithm)}> {algorithm.name}</button>
-              <div className="dropdownContent">
-                {
-                  algorithm.description.map((d,j)=>{
-                    return  <p key={`Description ${j}`}>{d}</p>
-                  })
-                }
-
+        {/* AlGORHTM BUTTONS */}
+        {
+          ALGORITHMS.map((algorithm, i) => {
+            return (
+              <div key={`Algorithm ${i}`} className="dropdown">
+                <button className='button' disabled={isButtonDisabled} onClick={() => handleActionBtn(algorithm)}>
+                  {algorithm.name}
+                </button>
+                <div className="dropdownContent">
+                  {
+                    algorithm.description.map((d, j) => {
+                      return <p key={`Description ${j}`}>
+                        {d}
+                      </p>
+                    })
+                  }
+                </div>
               </div>
-            </div>
-          </React.Fragment>
-        })
-      }
+            )
+          })
+        }
 
       </div>
       {/* RESET */}
-      <button className='button' disabled={isButtonDisabled}  onClick={handleReset}> Reset</button> 
+      <button className='button' disabled={isButtonDisabled} onClick={handleReset}> Reset</button>
 
     </div>
 

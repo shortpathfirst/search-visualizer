@@ -30,13 +30,10 @@ function BubbleVisualizer(){
     sortFunction(newArray);
   }
 
-  function print(sortAlgorithm:Sorter){
+  function execute(sortAlgorithm:Sorter){
     setButtonDisabled(true);
-    if(sortAlgorithm instanceof HeapSort){
-      setHeap(true);
-    }else{
-      setHeap(false);
-    }
+    setHeap(sortAlgorithm instanceof HeapSort);
+
     // Performance Evaluation
     let start = performance.now(); 
     // Order Array
@@ -75,7 +72,7 @@ function BubbleVisualizer(){
     <h1 className='title'>Bubble Visualizer</h1>
     <p id='subtitle'>An excercise to display the most commons comparison search algorithms </p>
 
-    <AlgorithmButtons isButtonDisabled={isButtonDisabled} handleActionBtn={print} handleReset={onReset}></AlgorithmButtons>
+    <AlgorithmButtons isButtonDisabled={isButtonDisabled} handleActionBtn={execute} handleReset={onReset}></AlgorithmButtons>
     
     <p className='message'>{message}</p>
 
