@@ -2,11 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { BinaryTreeUtils } from '../../LayeredDraw/BinaryTreeUtils.js'
 import { LayeredTreeDraw } from '../../LayeredDraw/LayeredDraw.js'
 import './treeStyle.css'
+type Position = {
+  x: number,
+  y: number
+}
+type Props = {
+  sortingArray: number[],
+  highlightedBars: number[],
+  handleChange: (newVal: number, index: number) => void,
+}
+function TreeVisual({ sortingArray, highlightedBars, handleChange }: Props) {
 
-function TreeVisual({ sortingArray, color, handleChange }) {
 
-
-  const [treePositions, setTreePos] = useState([]);
+  const [treePositions, setTreePos] = useState<Position[]>([]);
 
   const SETTINGS = {
     circleSize: '3.5rem',
@@ -20,21 +28,19 @@ function TreeVisual({ sortingArray, color, handleChange }) {
   useEffect(() => {
 
     const binaryHeap = new BinaryTreeUtils(sortingArray);
-    const positions = [];
+    const positions: Position[] = [];
     LayeredTreeDraw(binaryHeap, 0, binaryHeap.getHeight(), positions);
     setTreePos(positions.slice(0, sortingArray.length));
 
   }, [sortingArray])
 
-
   return (
-    <div className='treeContainer'>
+    <div className='treeContainer' style={{ width: "100vw", height:"20rem" }}>
       {
-
         treePositions.map((val, i) => {
-          return <React.Fragment key={`Tree ${i}`}   >
+          return <React.Fragment key={`Tree ${i}`}>
 
-            <svg width="2500" height="600" style={{ position: 'absolute', zIndex: '-1' }}>
+            <svg width={"2500"} height={"600"} style={{ position: 'absolute' }}>
               {
                 treePositions[Math.floor(2 * i + 2)] &&
                 <line x1={val.x * SETTINGS.scale + SETTINGS.xLineOffset} y1={val.y * SETTINGS.scale - SETTINGS.yLineOffset}
@@ -60,8 +66,8 @@ function TreeVisual({ sortingArray, color, handleChange }) {
                 position: 'absolute',
                 left: val.x * SETTINGS.scale,
                 top: val.y * SETTINGS.scale - SETTINGS.yOffset,
-                backgroundColor: (i === color[0] || i === color[1]) ? 'rgb(204, 189, 161)' : SETTINGS.circleColor,
-                transform: (i === color[0] || i === color[1]) ? `scale(${1.2})` : `scale(${1})`,
+                backgroundColor: (i === highlightedBars[0] || i === highlightedBars[1]) ? 'rgb(204, 189, 161)' : SETTINGS.circleColor,
+                transform: (i === highlightedBars[0] || i === highlightedBars[1]) ? `scale(${1.2})` : `scale(${1})`,
                 width: SETTINGS.circleSize,
                 height: SETTINGS.circleSize,
                 borderRadius: '50%',
@@ -76,7 +82,7 @@ function TreeVisual({ sortingArray, color, handleChange }) {
               <input
                 key={`Number ${i}`}
                 className='number'
-                onFocus={() => handleChange('', i)}
+                onFocus={() => handleChange(-1, i)}
                 onChange={ev => { handleChange(+ev.target.value, i) }}
                 value={sortingArray[i]} type='tel'>
               </input>

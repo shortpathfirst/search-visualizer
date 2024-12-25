@@ -1,4 +1,3 @@
-import React from 'react'
 import './buttons.css'
 import { BubbleSort } from '../../Ordinamenti/BubbleSort';
 import { HeapSort } from '../../Ordinamenti/HeapSort';
@@ -15,8 +14,12 @@ const ALGORITHMS = [
   new MergeSortVisual(),
   new TimSort()
 ];
-
-function AlgorithmButtons({ isButtonDisabled, handleActionBtn, handleReset }) {
+type Props = {
+  isButtonDisabled: boolean,
+  handleActionBtn: (algorithm: any) => void,
+  handleReset: () => void
+}
+function AlgorithmButtons({ isButtonDisabled, handleActionBtn, handleReset }: Props) {
 
   return (
 
@@ -27,7 +30,9 @@ function AlgorithmButtons({ isButtonDisabled, handleActionBtn, handleReset }) {
           ALGORITHMS.map((algorithm, i) => {
             return (
               <div key={`Algorithm ${i}`} className="dropdown">
-                <button className='button' disabled={isButtonDisabled} onClick={() => handleActionBtn(algorithm)}>
+                <button className='button'
+                  disabled={isButtonDisabled}
+                  onClick={() => handleActionBtn(algorithm)}>
                   {algorithm.name}
                 </button>
                 <div className="dropdownContent">

@@ -1,29 +1,29 @@
 .container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
 .title{
-    font-size: 4rem;
-    /* background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red); */
-    background-image: linear-gradient(to bottom, #6b2167, #ca81d8,#ceb7d8);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0;
-    -webkit-text-fill-color: rgb(82, 45, 117);
-    -webkit-text-stroke: 15px;
-    letter-spacing: 5px;
-    user-select: none;
+  font-size: 4rem;
+  /* background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red); */
+  background-image: linear-gradient(to bottom, #6b2167, #ca81d8,#ceb7d8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0;
+  -webkit-text-fill-color: rgb(82, 45, 117);
+  -webkit-text-stroke: 15px;
+  letter-spacing: 5px;
+  user-select: none;
 }
 #subtitle{
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .message{
-    font-size: 16px;
-    font-weight: bolder;
+  font-size: 16px;
+  font-weight: bolder;
 }

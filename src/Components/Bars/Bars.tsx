@@ -2,8 +2,11 @@ import { useMemo } from 'react'
 import './bars.css'
 
 const HEIGHTSCALE = 500;
-
-function Bars({ sortingArray, color }) {
+type Props = {
+  sortingArray: number[],
+  highlightedBars: number[],
+}
+function Bars({ sortingArray, highlightedBars }: Props) {
 
   const maxVal = useMemo(() => {
     let max = 1;
@@ -14,7 +17,11 @@ function Bars({ sortingArray, color }) {
     return max;
   }, [sortingArray])
 
-
+  const getBarColor = (index: number) => {
+    return (index === highlightedBars[0] || index === highlightedBars[1]) ?
+      'rgb(185, 22, 185)' :
+      'purple';
+  }
   return (
     <div className='barContainer'>
       {
@@ -24,7 +31,7 @@ function Bars({ sortingArray, color }) {
               key={`Bar ${i}`}
               className="barre"
               style={{
-                backgroundColor: (i === color[0] || i === color[1]) ? 'rgb(185, 22, 185)' : 'purple',
+                backgroundColor: getBarColor(i),
                 height: val * (HEIGHTSCALE / maxVal),
               }}>
 

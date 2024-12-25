@@ -2,9 +2,6 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    width:65rem;
-    height: 20rem;
-    transform: translate(-50%);
 }
 
 .treeNode:hover{
