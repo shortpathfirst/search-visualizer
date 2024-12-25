@@ -15,7 +15,7 @@ function BubbleVisualizer() {
   const init = RNDVALUES();
 
   const [numbersArray, changeArray] = useState(init);
-  const [sortingArray, sortFunction] = useState([...numbersArray]);
+  const [sortingArray, setSortingArray] = useState([...numbersArray]);
   const [highlightedBars, setHighlightedBars] = useState([-1, -1]);
   const [message, changeMessage] = useState('');
   const [isButtonDisabled, setButtonDisabled] = useState(false);
@@ -26,19 +26,20 @@ function BubbleVisualizer() {
       return i === index ? newVal : value;
     });
     changeArray(newArray);
-    sortFunction(newArray);
+    setSortingArray(newArray);
   }
 
   function execute(sortAlgorithm: Sorter) {
     setButtonDisabled(true);
+    setSortingArray([...numbersArray]);
     setHeap(sortAlgorithm instanceof HeapSort);
 
     // Performance Evaluation
-    let start = performance.now();
+    const start = performance.now();
     // Order Array
-    sortFunction([...numbersArray]);
     sortAlgorithm.order([...numbersArray]);
-    let numberSwaps = sortAlgorithm.arraySequence.length;
+    const numberSwaps = sortAlgorithm.arraySequence.length;
+
     // Swap the sorting array
     let copy = [...numbersArray];
     let index = 0;
@@ -46,14 +47,13 @@ function BubbleVisualizer() {
       if (sortAlgorithm.arraySequence.length > index) {
         let [i, j] = sortAlgorithm.arraySequence[index];
         [copy[i], copy[j]] = [copy[j], copy[i]];//Swap
-        sortFunction(copy);
+        setSortingArray(copy);
         setHighlightedBars([i, j]);
         index++;
       } else {
+        const end = performance.now();
         setButtonDisabled(false);
-        let end = performance.now();
-        let msg = `${sortAlgorithm.name} performed in ${(end - start).toFixed(2)} ms with ${numberSwaps} swaps`
-        changeMessage(msg);
+        changeMessage(`${sortAlgorithm.name} performed in ${(end - start).toFixed(2)} ms with ${numberSwaps} swaps`);
         clearInterval(interval);
       }
     }, 100);
@@ -61,22 +61,29 @@ function BubbleVisualizer() {
 
   const onReset = () => {
     const init = RNDVALUES();
-    sortFunction([...init]);
+    setSortingArray([...init]);
     changeArray([...init]);
     setHighlightedBars([-1, -1]);
   }
+
   return (
 
     <div className='container'>
       <h1 className='title'>Bubble Visualizer</h1>
       <p id='subtitle'>An excercise to display the most commons comparison search algorithms </p>
 
-      <AlgorithmButtons isButtonDisabled={isButtonDisabled} handleActionBtn={execute} handleReset={onReset}></AlgorithmButtons>
+      <AlgorithmButtons
+        isButtonDisabled={isButtonDisabled}
+        handleActionBtn={execute}
+        handleReset={onReset} />
 
       <p className='message'>{message}</p>
 
-      <InputArray array={numbersArray} sortingArray={sortingArray} highlightedBars={highlightedBars} handleChange={handleChange}></InputArray>
-
+      <InputArray
+        array={numbersArray}
+        sortingArray={sortingArray}
+        highlightedBars={highlightedBars}
+        handleChange={handleChange} />
       {
         isHeap ?
           <TreeVisual sortingArray={sortingArray} highlightedBars={highlightedBars} handleChange={handleChange}></TreeVisual> :
